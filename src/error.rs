@@ -1,3 +1,9 @@
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum Error {
+    BufferOverflow(BufferOverflow),
+    InvalidData(InvalidData),
+}
+
 #[derive(Clone, Debug, PartialEq, Eq, Default)]
 pub struct BufferOverflow;
 

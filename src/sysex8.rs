@@ -4,6 +4,8 @@ use crate::{
     ux,
 };
 
+mod accumulator;
+
 pub(crate) const UMP_MESSAGE_TYPE: u8 = 0x5;
 
 const ERR_INVALID_NUMBER_OF_PAYLOAD_BYTES: &str = "Invalid number of payload bytes in packet";

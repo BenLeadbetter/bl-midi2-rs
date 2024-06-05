@@ -6,6 +6,8 @@ use crate::{
     ux::{self, u7},
 };
 
+mod accumulator;
+
 pub(crate) const UMP_MESSAGE_TYPE: u8 = 0x3;
 
 #[midi2_proc::generate_message(MinSizeUmp(2), MinSizeBytes(2))]
