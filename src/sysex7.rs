@@ -7,8 +7,10 @@ use crate::{
 };
 
 mod packet;
+mod parser;
 
 pub use packet::Packet;
+pub use parser::Sysex7Parser;
 
 pub(crate) const UMP_MESSAGE_TYPE: u8 = 0x3;
 
