@@ -42,7 +42,8 @@ impl<B: crate::buffer::BufferMut> Sysex7Parser<B> {
     }
 
     pub fn clear(&mut self) {
-        todo!()
+        self.index = 0;
+        self.state = State::ExpectingStart;
     }
 
     pub fn buffer(&self) -> &[B::Unit] {
@@ -188,5 +189,42 @@ mod tests {
             parser.parse_raw(&[0x3030_0000, 0x0][..]),
             Ok(ParseResult::Complete(expected[..].try_into().unwrap())),
         );
+    }
+
+    #[test]
+    fn parse_raw_start_continue_and_end() {
+        let mut parser = Sysex7Parser::<std::vec::Vec<u32>>::new();
+        let expected = [0x3010_0000, 0x0, 0x3020_0000, 0x0, 0x3030_0000, 0x0];
+        assert_eq!(
+            parser.parse_raw(&[0x3010_0000, 0x0][..]),
+            Ok(ParseResult::Incomplete),
+        );
+        assert_eq!(
+            parser.parse_raw(&[0x3020_0000, 0x0][..]),
+            Ok(ParseResult::Incomplete),
+        );
+        assert_eq!(
+            parser.parse_raw(&[0x3030_0000, 0x0][..]),
+            Ok(ParseResult::Complete(expected[..].try_into().unwrap())),
+        );
+    }
+
+    #[test]
+    fn parse_start_and_clear() {
+        let mut parser = Sysex7Parser::<std::vec::Vec<u32>>::new();
+        assert_eq!(
+            parser.parse_raw(&[0x3010_0000, 0x0][..]),
+            Ok(ParseResult::Incomplete),
+        );
+        parser.clear();
+        assert!(parser.buffer().is_empty());
+    }
+
+    #[test]
+    fn message() {
+        let mut parser = Sysex7Parser::<std::vec::Vec<u32>>::new();
+        let buffer = [0x3000_0000, 0x0];
+        parser.parse_raw(&buffer[..]).expect("should be ok");
+        assert_eq!(parser.message(), Some(buffer[..].try_into().unwrap()));
     }
 }
