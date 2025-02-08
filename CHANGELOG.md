@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/midi2-dev/bl-midi2-rs/compare/0.8.0..0.7.1) - 2025-02-08
+
+### ✨ Features
+
+- Adds finish release action - ([e8b63a2](https://github.com/midi2-dev/bl-midi2-rs/commit/e8b63a258647b0a4e2e2522862ee88391f25c81a))
+
+
 ## [0.7.0](https://github.com/midi2-dev/bl-midi2-rs/compare/0.6.5..0.7.0) - 2025-01-18
 
 ### 🐛 Fixes
