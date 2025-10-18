@@ -1,5 +1,5 @@
 [workspace]
-members = ["midi2", "midi2_proc", "examples/*", "fuzz"]
+members = ["midi2", "midi2_proc", "examples/*", "fuzz", "message_schema"]
 default-members = ["midi2"]
 resolver = "2"
 

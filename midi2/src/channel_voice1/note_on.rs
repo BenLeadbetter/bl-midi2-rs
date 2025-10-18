@@ -8,34 +8,8 @@ pub(crate) const STATUS: u8 = 0b1001;
 /// MIDI 1.0 Channel Voice Note On Message
 ///
 /// See the [module docs](crate::channel_voice1) for more info.
-#[midi2_proc::generate_message(
-    Via(crate::channel_voice1::ChannelVoice1),
-    FixedSize,
-    MinSizeUmp(1),
-    MinSizeBytes(3)
-)]
-struct NoteOn {
-    #[property(common_properties::UmpMessageTypeProperty<UMP_MESSAGE_TYPE>)]
-    ump_type: (),
-    #[property(common_properties::ChannelVoiceStatusProperty<STATUS>)]
-    status: (),
-    #[property(common_properties::ChannelProperty)]
-    channel: crate::ux::u4,
-    #[property(common_properties::GroupProperty)]
-    group: crate::ux::u4,
-    #[property(common_properties::HybridSchemaProperty<
-        crate::ux::u7,
-        schema::Bytes<0x00, 0x7F, 0x0>,
-        schema::Ump<0x0000_7F00, 0x0, 0x0, 0x0>,
-    >)]
-    note_number: crate::ux::u7,
-    #[property(common_properties::HybridSchemaProperty<
-        crate::ux::u7,
-        schema::Bytes<0x00, 0x0, 0x7F>,
-        schema::Ump<0x0000_007F, 0x0, 0x0, 0x0>,
-    >)]
-    velocity: crate::ux::u7,
-}
+#[midi2_proc::new_generate_message(midi2_message_schema::channel_voice1::NOTE_ON)]
+const _: () = ();
 
 #[cfg(test)]
 mod tests {

@@ -4,9 +4,15 @@ mod common;
 mod derives;
 mod generate_ci;
 mod generate_message;
+mod old_generate_message;
 
 #[proc_macro_attribute]
 pub fn generate_message(attrs: TokenStream1, item: TokenStream1) -> TokenStream1 {
+    old_generate_message::generate_message(attrs, item)
+}
+
+#[proc_macro_attribute]
+pub fn new_generate_message(attrs: TokenStream1, item: TokenStream1) -> TokenStream1 {
     generate_message::generate_message(attrs, item)
 }
 

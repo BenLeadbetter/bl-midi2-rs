@@ -1,0 +1,57 @@
+{
+    "fixed_size": true,
+    "ump": {
+        "min_size": 1,
+    },
+    "bytes": {
+        "min_size": 3,
+    },
+    "properties": {
+        "ump_message_type": {
+            "inherits": "standard_ump_message_type",
+            "constant_value": 0x2,
+        },
+        "channel_voice_status": {
+            "inherits": "standard_channel_voice_status",
+            "constant_value": 0x9,
+        },
+        "channel": {
+            "inherits": "standard_channel",
+        },
+        "group": {
+            "inherits": "standard_group",
+        },
+        "note_number": {
+            type: "u7",
+            "read": true,
+            "write": true,
+            "bytes_mask": [
+                0x00, 
+                0x7F, 
+                0x00,
+            ],
+            "ump_mask": [
+                0x00007F00, 
+                0x0, 
+                0x0, 
+                0x0,
+            ],
+        },
+        "velocity": {
+            type: "u7",
+            "read": true,
+            "write": true,
+            "bytes_mask": [
+                0x00, 
+                0x00,
+                0x7F, 
+            ],
+            "ump_mask": [
+                0x0000007F, 
+                0x0, 
+                0x0, 
+                0x0,
+            ],
+        },
+    },
+}
