@@ -1,0 +1,84 @@
+{
+    types: [
+        "u4",
+        "u7",
+    ],
+    messages: {
+        "channel_voice1_note_on": {
+            name: "note_on",
+            "ump": {
+                "packet_size": 1,
+                "max_packets": 1,
+                "min_packets": 1,
+                "properties": {
+                    "ump_message_type": {
+                        type: "u4",
+                        constant: 0x2,
+                        packet_offset: 0,
+                        bit_offset: 0,
+                        length: 4,
+                    },
+                    "group": {
+                        type: "u4",
+                        packet_offset: 0,
+                        bit_offset: 4,
+                        length: 4,
+                    },
+                    "status": {
+                        type: "u4",
+                        constant: 0x9,
+                        packet_offset: 0,
+                        bit_offset: 8,
+                        length: 4,
+                    },
+                    "channel": {
+                        type: "u4",
+                        packet_offset: 0,
+                        bit_offset: 12,
+                        length: 4,
+                    },
+                    "note_number": {
+                        type: "u7",
+                        packet_offset: 0,
+                        bit_offset: 17,
+                        length: 7,
+                    },
+                    "velocity": {
+                        type: "u7",
+                        packet_offset: 0,
+                        bit_offset: 25,
+                        length: 7,
+                    },
+                }
+
+            },
+            "bytes": {
+                "max_size": 3,
+                "min_size": 3,
+                "properties": {
+                    "status": {
+                        type: "u4",
+                        constant: 0x9,
+                        bit_offset: 0,
+                        length: 4,
+                    },
+                    "channel": {
+                        type: "u4",
+                        bit_offset: 4,
+                        length: 4,
+                    },
+                    "note_number": {
+                        type: "u7",
+                        bit_offset: 9,
+                        length: 7,
+                    },
+                    "velocity": {
+                        type: "u7",
+                        bit_offset: 17,
+                        length: 7,
+                    },
+                }
+            },
+        },
+    },
+}

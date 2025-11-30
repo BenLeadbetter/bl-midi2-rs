@@ -6,6 +6,7 @@ pub mod common_properties;
 pub mod helpers;
 pub mod property;
 pub mod schema;
+pub mod types;
 
 #[cfg(test)]
 pub mod test_support;

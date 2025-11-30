@@ -14,7 +14,10 @@ repository = "https://github.com/BenLeadbetter/midi2.git"
 proc-macro = true
 
 [dependencies]
+darling = "0.21.3"
+heck = "0.5.0"
 json5 = "0.4.1"
+midi2_message_schema = { version = "0.11.0", path = "../message_schema" }
 proc-macro2 = "1.0.81"
 quote = "1.0.36"
 serde = { version = "1.0.219", features = ["std", "derive"] }

@@ -2,3 +2,7 @@
 name = "midi2_message_schema"
 version = "0.11.0"
 edition = "2024"
+
+[dependencies]
+json5 = "0.4.1"
+serde = { version = "1.0.228", features = ["derive"] }

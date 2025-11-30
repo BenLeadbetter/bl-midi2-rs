@@ -1,14 +1,7 @@
-use crate::{
-    channel_voice1::UMP_MESSAGE_TYPE,
-    detail::{common_properties, schema},
-};
-
-pub(crate) const STATUS: u8 = 0b1001;
-
 /// MIDI 1.0 Channel Voice Note On Message
 ///
 /// See the [module docs](crate::channel_voice1) for more info.
-#[midi2_proc::new_generate_message(midi2_message_schema::channel_voice1::NOTE_ON)]
+#[midi2_proc::new_generate_message(message = "channel_voice1_note_on")]
 const _: () = ();
 
 #[cfg(test)]
